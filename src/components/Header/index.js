@@ -1,36 +1,26 @@
-import { Breadcrumb, Layout, Menu, theme } from 'antd';
+import { Col, Menu, Row } from 'antd';
 import logo from '../../source/logo.gif';
-const { Header, Content, Footer } = Layout;
+import './Header.scss';
+import { Link } from 'react-router-dom';
 const HeaderLayout = () => {
     const menuItems = ['Phim Bộ', 'Phim Lẻ', 'Shows', 'Hoạt Hình', 'Thể Loại', 'Quốc Gia', 'Sắp Chiếu'];
     return (
-        <Header
-            style={{
-                position: 'sticky',
-                top: 0,
-                zIndex: 1,
-                width: '100%',
-            }}
-        >
-            <div
-                style={{
-                    float: 'left',
-                    height: '100%',
-                    background: 'rgba(255, 255, 255, 0.2)',
-                }}
-            >
-                <img style={{ height: '100%' }} src={logo} alt="Logo" />
-            </div>
-            <Menu
-                theme="dark"
-                mode="horizontal"
-                defaultSelectedKeys={'0'}
-                items={menuItems.map((item, index) => ({
-                    key: index,
-                    label: item,
-                }))}
-            />
-        </Header>
+        <Row className="header">
+            <Col span={4} className="header-left">
+                <img src={logo} alt="Logo" />
+            </Col>
+            <Col span={20} className="header-right">
+                <Menu
+                    theme="dark"
+                    mode="horizontal"
+                    defaultSelectedKeys={'0'}
+                    items={menuItems.map((item, index) => ({
+                        key: index,
+                        label: item,
+                    }))}
+                />
+            </Col>
+        </Row>
     );
 };
 export default HeaderLayout;
