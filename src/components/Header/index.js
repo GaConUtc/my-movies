@@ -1,7 +1,6 @@
 import { Col, Menu, Row } from 'antd';
 import logo from '../../source/logo.gif';
 import './Header.scss';
-import { Link } from 'react-router-dom';
 const HeaderLayout = () => {
     const menuItems = ['Phim Bộ', 'Phim Lẻ', 'Shows', 'Hoạt Hình', 'Thể Loại', 'Quốc Gia', 'Sắp Chiếu'];
     return (
