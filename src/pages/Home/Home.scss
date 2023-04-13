@@ -18,5 +18,32 @@
         .ant-table-cell-row-hover {
             background: none !important;
         }
+
+        .movie-name {
+            display: flex;
+            &__thumb {
+                margin-right: 1rem;
+                height: 3.5rem;
+                width: 3rem;
+            }
+
+            &__link {
+                font-size: 0.8rem;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                h4 {
+                    color: rgb(229 231 235);
+                    font-weight: 500;
+                }
+            }
+        }
+        .movie-status {
+            background-color: rgb(15 23 42);
+            line-height: 1.5rem;
+            padding: 0 0.7rem;
+            border-radius: 9999px;
+            color: rgb(74 222 128);
+        }
     }
 }

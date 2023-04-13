@@ -1,20 +1,34 @@
-import { Row, Space, Table } from 'antd';
-import React from 'react';
+import { Row, Table } from 'antd';
+import React, { useEffect, useState } from 'react';
 
+import { getMovies } from '../../services/getAllMovies';
 import './Home.scss';
 
 const Home = () => {
+    const [dataMovie, setDataMovie] = useState([]);
+    const [pathImage, setPathImage] = useState('https://img.ophim1.com/uploads/movies/');
+    useEffect(() => {
+        const getData = async () => {
+            const rsVal = await getMovies({ page: 1 });
+            if (Object.keys(rsVal).length > 0) {
+                setDataMovie([...rsVal.items]);
+                setPathImage(rsVal.pathImage);
+            }
+        };
+        getData();
+    }, []);
     const columns = [
         {
             title: 'TÊN',
             dataIndex: 'name',
-            render: () => (
-                <Space size="middle">
-                    <a>Delete</a>
-                    <a>
-                        <Space>More actions</Space>
+            render: (_, record) => (
+                <div className="movie-name">
+                    <img alt="Movie Thumb" className="movie-name__thumb" src={pathImage + record.thumb_url} />
+                    <a className="movie-name__link">
+                        <h3>{record.name}</h3>
+                        <h4>{`(${record.origin_name})`}</h4>
                     </a>
-                </Space>
+                </div>
             ),
         },
         {
@@ -24,6 +38,7 @@ const Home = () => {
         {
             title: 'TÌNH TRẠNG',
             dataIndex: 'status',
+            render: (text) => <span className="movie-status">{text}</span>,
         },
         {
             title: 'ĐỊNH DẠNG',
@@ -38,108 +53,18 @@ const Home = () => {
             dataIndex: 'modifiedTime',
         },
     ];
-    const data = [
-        {
-            key: '1',
-            name: 'John Brown',
-            year: 2023,
-            status: 'full',
-            type: 'Phim Lẻ',
-            country: 'New York No. 1 Lake Park',
-            modifiedTime: '13/04/2023',
-        },
-        {
-            key: '1',
-            name: 'John Brown',
-            year: 2023,
-            status: 'full',
-            type: 'Phim Lẻ',
-            country: 'New York No. 1 Lake Park',
-            modifiedTime: '13/04/2023',
-        },
-        {
-            key: '1',
-            name: 'John Brown',
-            year: 2023,
-            status: 'full',
-            type: 'Phim Lẻ',
-            country: 'New York No. 1 Lake Park',
-            modifiedTime: '13/04/2023',
-        },
-        {
-            key: '1',
-            name: 'John Brown',
-            year: 2023,
-            status: 'full',
-            type: 'Phim Lẻ',
-            country: 'New York No. 1 Lake Park',
-            modifiedTime: '13/04/2023',
-        },
-        {
-            key: '1',
-            name: 'John Brown',
-            year: 2023,
-            status: 'full',
-            type: 'Phim Lẻ',
-            country: 'New York No. 1 Lake Park',
-            modifiedTime: '13/04/2023',
-        },
-        {
-            key: '1',
-            name: 'John Brown',
-            year: 2023,
-            status: 'full',
-            type: 'Phim Lẻ',
-            country: 'New York No. 1 Lake Park',
-            modifiedTime: '13/04/2023',
-        },
-        {
-            key: '1',
-            name: 'John Brown',
-            year: 2023,
-            status: 'full',
-            type: 'Phim Lẻ',
-            country: 'New York No. 1 Lake Park',
-            modifiedTime: '13/04/2023',
-        },
-        {
-            key: '1',
-            name: 'John Brown',
-            year: 2023,
-            status: 'full',
-            type: 'Phim Lẻ',
-            country: 'New York No. 1 Lake Park',
-            modifiedTime: '13/04/2023',
-        },
-        {
-            key: '1',
-            name: 'John Brown',
-            year: 2023,
-            status: 'full',
-            type: 'Phim Lẻ',
-            country: 'New York No. 1 Lake Park',
-            modifiedTime: '13/04/2023',
-        },
-        {
-            key: '1',
-            name: 'John Brown',
-            year: 2023,
-            status: 'full',
-            type: 'Phim Lẻ',
-            country: 'New York No. 1 Lake Park',
-            modifiedTime: '13/04/2023',
-        },
-        {
-            key: '1',
-            name: 'John Brown',
-            year: 2023,
-            status: 'full',
-            type: 'Phim Lẻ',
-            country: 'New York No. 1 Lake Park',
-            modifiedTime: '13/04/2023',
-        },
-    ];
-
+    console.log(dataMovie);
+    const data = dataMovie?.map((item) => {
+        return {
+            key: item._id,
+            status: 'Full',
+            type: 'Phim Bộ',
+            country: 'Hàn Quốc',
+            modifiedTime: item.modified.time,
+            ...item,
+        };
+    });
+    console.log(data);
     return (
         <Row className="container">
             <Table columns={columns} dataSource={data} size="middle" />
