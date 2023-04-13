@@ -1,0 +1,25 @@
+.section-page {
+    color: rgba(255, 255, 255, 0.65);
+    .section-page__item {
+        margin: 0 0.5rem;
+        padding: 0.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        --tw-gradient-from: #1f2937;
+        --tw-gradient-to: #374151;
+        --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgb(31 41 55/0));
+        background-image: linear-gradient(to right, var(--tw-gradient-stops));
+        box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+        border-radius: 0.5rem;
+        &__header {
+            color: rgb(14 165 233);
+            font-size: 1.25rem;
+        }
+        &__icon {
+            margin-right: 5px;
+        }
+    }
+}

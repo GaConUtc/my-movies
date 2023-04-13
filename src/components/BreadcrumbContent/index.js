@@ -5,15 +5,17 @@ import './BreadcrumbContent.scss';
 const BreadcrumbContent = () => (
     <Breadcrumb
         className="breadcrumb container"
-        items={[
+        routes={[
             {
-                title: 'Trang Chủ',
+                path: '/',
+                breadcrumbName: 'Trang Chủ',
             },
             {
-                title: 'Phim Bộ',
+                path: '/',
+                breadcrumbName: 'Phim Bộ',
             },
             {
-                title: 'Trang 1',
+                breadcrumbName: 'Trang 1',
             },
         ]}
     />

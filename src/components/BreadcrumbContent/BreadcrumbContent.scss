@@ -2,14 +2,17 @@
     color: rgb(148 163 184);
     padding: 1rem 0;
     border-bottom: solid 1px #333;
-    // .ant-breadcrumb .ant-breadcrumb-link, .ant-breadcrumb-link: {
-    //     color: rgb(148 163 184);
-    // }
     .ant-breadcrumb-separator {
         color: rgb(148 163 184);
     }
-}
-.ant-breadcrumb li:last-child {
-    color: #fff;
-    font-weight: 300;
+    a {
+        color: rgb(148 163 184);
+    }
+    .ant-breadcrumb li:last-child {
+        color: #fff;
+        font-weight: 300;
+    }
+    .ant-breadcrumb-link a:hover {
+        color: #fff;
+    }
 }
