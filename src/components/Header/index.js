@@ -1,7 +1,7 @@
-import { Col, Menu, Row } from 'antd';
+import { Col, Row } from 'antd';
 import logo from '../../source/logo.gif';
 import './Header.scss';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 const HeaderLayout = () => {
     const menuItems = [
         {

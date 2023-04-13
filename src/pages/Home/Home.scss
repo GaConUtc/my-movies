@@ -1,0 +1,22 @@
+.ant-table-wrapper {
+    width: 100%;
+}
+
+.ant-table {
+    background: #1f2937 !important;
+    .ant-table-content {
+        background: #1f2937;
+        color: rgb(255 255 255);
+        width: 100%;
+        border-radius: 0.5rem;
+        box-shadow: none;
+        .ant-table-thead .ant-table-cell {
+            color: rgb(255 255 255);
+            background: transparent;
+        }
+
+        .ant-table-cell-row-hover {
+            background: none !important;
+        }
+    }
+}

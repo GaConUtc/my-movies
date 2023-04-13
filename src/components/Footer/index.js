@@ -1,4 +1,4 @@
-import { Col, Row } from 'antd';
+import { Row } from 'antd';
 import React from 'react';
 
 import './Footer.scss';
@@ -18,13 +18,19 @@ const Footer = () => {
                     <p>Copyright © 2022 OPhim.TV</p>
                 </div>
                 <div className="rc-footer">
-                    <a href="#">Giới Thiệu</a>
+                    <a href={'#'} onClick={() => {}}>
+                        Giới Thiệu
+                    </a>
                 </div>
                 <div className="rc-footer">
-                    <a href="#">Khiếu nại bản quyền</a>
+                    <a href={'#'} onClick={() => {}}>
+                        Khiếu nại bản quyền
+                    </a>
                 </div>
                 <div className="rc-footer">
-                    <a href="#">API</a>
+                    <a href={'#'} onClick={() => {}}>
+                        API
+                    </a>
                 </div>
             </Row>
         </div>
