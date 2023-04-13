@@ -1,12 +1,15 @@
 import './App.css';
 import HeaderLayout from './components/Header';
 import BreadcrumbContent from './components/BreadcrumbContent';
+import { BrowserRouter, Route } from 'react-router-dom';
 
 function App() {
     return (
         <>
-            <HeaderLayout />
-            <BreadcrumbContent />
+            <BrowserRouter>
+                <HeaderLayout />
+                <BreadcrumbContent />
+            </BrowserRouter>
         </>
     );
 }
