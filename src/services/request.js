@@ -5,6 +5,7 @@ const request = axios.create({
 });
 
 export const requestGet = async (path, options) => {
+    console.log(options);
     const res = await request.get(path, options);
     return res.data;
 };

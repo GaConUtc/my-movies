@@ -4,6 +4,7 @@
 
 .ant-table {
     background: #1f2937 !important;
+
     .ant-table-content {
         background: #1f2937;
         color: rgb(255 255 255);
@@ -14,9 +15,11 @@
             color: rgb(255 255 255);
             background: transparent;
         }
-
+        // .ant-table-tbody > tr > td {
+        //     border-top: 0.1px solid #e5e7eb;
+        // }
         .ant-table-cell-row-hover {
-            background: none !important;
+            background: rgba(92, 124, 168, 0.103) !important;
         }
 
         .movie-name {
@@ -32,6 +35,9 @@
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
+                h3:hover {
+                    color: rgb(14 165 233);
+                }
                 h4 {
                     color: rgb(229 231 235);
                     font-weight: 500;
@@ -45,5 +51,30 @@
             border-radius: 9999px;
             color: rgb(74 222 128);
         }
+    }
+}
+
+.table-movie {
+    margin-top: 1rem;
+    justify-content: flex-end;
+
+    .ant-pagination {
+        color: rgb(255 255 255/0.6);
+
+        li button {
+            color: rgb(255 255 255/0.6);
+        }
+        li a {
+            color: rgb(255 255 255/0.6);
+        }
+        .anticon-double-right.ant-pagination-item-link-icon {
+            color: rgb(255 255 255/0.6);
+            .ant-pagination-item-ellipsis {
+                color: rgb(255 255 255/0.6);
+            }
+        }
+    }
+    .ant-pagination-item-active {
+        background-color: transparent;
     }
 }
