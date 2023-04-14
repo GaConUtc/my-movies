@@ -13,7 +13,7 @@ function App() {
             <BrowserRouter>
                 <HeaderLayout />
                 <BreadcrumbContent />
-                <SectionPage />
+                {/* <SectionPage /> */}
                 <Routes>
                     <Route path={'/'} element={<Home />}></Route>
                     <Route path={`/phim`} element={<DetailMovie />}></Route>
