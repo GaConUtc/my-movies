@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const request = axios.create({
-    baseURL: 'https://ophim1.com/danh-sach/',
+    baseURL: 'https://ophim1.com/',
 });
 
 export const requestGet = async (path, options) => {

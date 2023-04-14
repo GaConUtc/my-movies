@@ -4,6 +4,7 @@ import moment from 'moment';
 
 import { getMovies } from '../../services/getAllMovies';
 import './Home.scss';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
     const [dataMovie, setDataMovie] = useState([]);
@@ -38,10 +39,10 @@ const Home = () => {
             render: (_, record) => (
                 <div className="movie-name">
                     <img alt="Movie Thumb" className="movie-name__thumb" src={pathImage + record.thumb_url} />
-                    <a className="movie-name__link">
+                    <Link className="movie-name__link" to={`./phim?slug=${record.slug}`}>
                         <h3>{record.name}</h3>
                         <h4>{`(${record.origin_name})`}</h4>
-                    </a>
+                    </Link>
                 </div>
             ),
         },

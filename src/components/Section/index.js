@@ -6,7 +6,7 @@ import './SectionPage.scss';
 import SectionItem from './SectionItem';
 const SectionPage = () => {
     return (
-        <Row className="section-page container">
+        <Row justify="start" className="section-page container">
             <h4>
                 Dữ liệu phim miễn phí vĩnh viễn. Cập nhật nhanh, chất lượng cao, ổn định và lâu dài. Tốc độ phát cực
                 nhanh với đường truyền băng thông cao, đảm bảo đáp ứng được lượng xem phim trực tuyến lớn. Đồng thời
