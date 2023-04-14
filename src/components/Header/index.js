@@ -37,7 +37,9 @@ const HeaderLayout = () => {
     return (
         <Row className="header">
             <Col span={4} className="header-left">
-                <img src={logo} alt="Logo" />
+                <Link to={'/'}>
+                    <img src={logo} alt="Logo" />
+                </Link>
             </Col>
             <Col span={20} className="header-right">
                 <ul

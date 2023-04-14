@@ -10,6 +10,7 @@ const Home = () => {
     const [pathImage, setPathImage] = useState('https://img.ophim1.com/uploads/movies/');
     const [currentPage, setCurrentPage] = useState(1);
     const [totalItem, setTotalItem] = useState(1);
+    const [loadingTable, setLoadingTable] = useState(true);
 
     const getData = async () => {
         const rsVal = await getMovies({ page: currentPage });
@@ -17,6 +18,7 @@ const Home = () => {
             setDataMovie([...rsVal.items]);
             setPathImage(rsVal.pathImage);
             setTotalItem(rsVal.pagination.totalItems);
+            setLoadingTable(false);
         }
     };
 
@@ -85,7 +87,7 @@ const Home = () => {
     return (
         <>
             <Row className="container">
-                <Table columns={columns} dataSource={data} size="middle" pagination={false} />
+                <Table columns={columns} dataSource={data} size="middle" loading={loadingTable} pagination={false} />
             </Row>
             <Row className="container table-movie">
                 <Pagination
@@ -94,6 +96,7 @@ const Home = () => {
                     showTotal={(total, range) => `Đang xem ${range[0]} - ${range[1]} | Tổng ${total} Kết quả`}
                     defaultPageSize={24}
                     defaultCurrent={currentPage}
+                    showSizeChanger={false}
                 />
             </Row>
         </>

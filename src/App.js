@@ -1,10 +1,11 @@
 import './App.css';
 import HeaderLayout from './components/Header';
 import BreadcrumbContent from './components/BreadcrumbContent';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Footer from './components/Footer';
 import SectionPage from './components/Section';
 import Home from './pages/Home';
+import DetailMovie from './pages/DetailMovie';
 
 function App() {
     return (
@@ -13,7 +14,10 @@ function App() {
                 <HeaderLayout />
                 <BreadcrumbContent />
                 <SectionPage />
-                <Home />
+                <Routes>
+                    <Route path={'/'} element={<Home />}></Route>
+                    <Route path={'/phim'} element={<DetailMovie />}></Route>
+                </Routes>
                 <Footer />
             </BrowserRouter>
         </>
