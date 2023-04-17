@@ -13,7 +13,7 @@ export const getMovies = async ({ ...param }) => {
 
 export const getMovieDetail = async ({ ...param }) => {
     try {
-        const res = await request.requestGet(`danh-sach/phim-moi-cap-nhat/${param.slug}`);
+        const res = await request.requestGet(`phim/${param.slug}`);
         return res;
     } catch (err) {
         console.log(err);

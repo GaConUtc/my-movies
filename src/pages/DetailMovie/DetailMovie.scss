@@ -4,15 +4,26 @@
     margin-top: 1rem;
     color: rgb(255 255 255/0.6);
     background-color: rgb(30 41 59);
-    border-radius: 15px;
     height: 380px;
-    padding: 0.8rem;
+    padding: 0.5rem;
+    border-radius: 15px;
     &__thumb {
-        overflow: hidden;
         border-radius: 15px;
         .ant-card {
+            overflow: hidden;
             border: none;
             height: 100%;
+            border-radius: 15px;
+            .ant-card-cover {
+                height: 100%;
+                margin: 0;
+                margin-inline-start: 0;
+                margin-inline-end: 0;
+                img {
+                    height: 100%;
+                    border-radius: 0;
+                }
+            }
             .ant-card-body {
                 display: none;
             }
@@ -45,9 +56,172 @@
             div {
                 padding: 0.25rem;
                 background-color: rgb(139 92 246);
-                border-radius: 0.25rem;
+                border-radius: 0.2rem;
                 color: rgb(249 250 251);
                 cursor: pointer;
+            }
+        }
+    }
+
+    &__infor {
+        width: 100%;
+        margin-left: 1rem;
+        color: rgb(56 189 248);
+        &__name {
+            flex-direction: column;
+            align-items: center;
+            padding-bottom: 0.5rem;
+            border-bottom: 0.5px solid rgb(229, 231, 235, 0.3);
+            h1 {
+                text-transform: uppercase;
+                color: rgb(139 92 246);
+                line-height: 1.75rem;
+                font-size: 1.125rem;
+            }
+
+            h2 {
+                font-style: italic;
+                color: rgb(14 165 233);
+                font-size: inherit;
+                font-weight: inherit;
+            }
+        }
+        &__main {
+            flex-flow: nowrap;
+            flex-direction: column;
+        }
+        &__item {
+            padding: 0.2rem;
+            box-sizing: border-box;
+            border-bottom: 0.5px solid rgb(229, 231, 235, 0.3);
+            .ant-col {
+                font-size: 1rem;
+            }
+        }
+    }
+}
+
+.movie-description {
+    flex-flow: nowrap;
+    margin-top: 1rem;
+    color: rgb(255 255 255/0.6);
+    background-color: rgb(30 41 59);
+    padding: 0.5rem;
+    border-radius: 15px;
+    flex-direction: column;
+    .ant-collapse {
+        background-color: rgb(12 74 110);
+        border: none;
+
+        &-item {
+            border-bottom: none;
+            .ant-collapse-header {
+                font-weight: 500;
+                color: rgb(56 189 248);
+            }
+            .ant-collapse-content {
+                background-color: rgb(30 41 59);
+                color: rgb(229 231 235);
+                border-top: none;
+            }
+        }
+    }
+    .ant-collapse:not(:last-child) {
+        margin-bottom: 0.5rem;
+    }
+    &__server__name {
+        text-transform: uppercase;
+        padding: 0.5rem 0;
+        font-weight: 700;
+        span {
+            color: rgb(139 92 246);
+        }
+    }
+    &__server {
+        display: flex;
+        flex-direction: column;
+        &__list {
+            display: grid;
+            gap: 0.5rem;
+            grid-template-columns: repeat(16, minmax(0, 1fr));
+        }
+        &__item {
+            text-align: center;
+            background-color: rgb(71 85 105);
+            color: rgb(249 250 251);
+            padding: 0.25rem 2rem;
+            border-radius: 0.25rem;
+        }
+        &__item:hover {
+            background-color: rgb(124 58 237);
+            color: rgb(249 250 251);
+        }
+    }
+
+    &__source {
+        display: flex;
+        margin-bottom: 0.5rem;
+        > span {
+            margin-right: 0.5rem;
+        }
+        &__item {
+            display: flex;
+            margin-right: 1rem;
+            input {
+                margin: 0;
+                padding: 0;
+                border: none;
+                margin-right: 0.2rem;
+            }
+            label {
+                color: rgb(14 165 233);
+            }
+        }
+    }
+
+    &__type {
+        margin-right: 1rem;
+        &__item {
+            display: flex;
+            align-items: center;
+            margin-right: 1rem;
+            label {
+                margin-right: 0.5rem;
+            }
+            input {
+                max-width: 5rem;
+                background-color: rgb(51 65 85);
+                color: rgb(229 231 235);
+            }
+            input::placeholder {
+                color: rgb(229 231 235);
+                opacity: 0.3;
+            }
+        }
+    }
+
+    .ant-collapse-content-box {
+        .ant-tabs {
+            max-width: 50%;
+        }
+        .tablist {
+            margin-bottom: 0;
+        }
+        .ant-tabs-tab {
+            background-color: rgb(15 23 42);
+            color: rgb(229 231 235);
+        }
+        .ant-tabs-content {
+            background-color: rgb(15 23 42);
+            color: rgb(229 231 235);
+            .ant-tabs-tabpane {
+                background-color: rgb(30, 41, 59);
+            }
+            textarea {
+                background-color: rgb(15 23 42);
+                color: rgb(229 231 235);
+                cursor: text;
+                border-color: rgb(51, 65, 85, 1);
             }
         }
     }
