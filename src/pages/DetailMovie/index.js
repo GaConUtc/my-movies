@@ -14,7 +14,6 @@ const DetailMovie = () => {
     const [movieCategory, setMovieCategory] = useState([]);
     const [movieEpisodes, setMovieEpisodes] = useState([]);
 
-    console.log('movieEpisodes', movieEpisodes);
     const loadDetaiMovie = async () => {
         const dataMovie = await getMovieDetail({ slug: slugName });
         if (Object.keys(dataMovie).length > 0) {
@@ -92,7 +91,11 @@ const DetailMovie = () => {
             </Row>
             <>
                 {Array.isArray(movieEpisodes) && movieEpisodes.length ? (
-                    <MovieDescription episodes={movieEpisodes} content={movieDetail?.movie?.content} />
+                    <MovieDescription
+                        episodes={movieEpisodes}
+                        content={movieDetail?.movie?.content}
+                        name={movieDetail?.movie?.name}
+                    />
                 ) : (
                     ''
                 )}

@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { Row, Collapse, Input, Tabs } from 'antd';
 const { Panel } = Collapse;
 
-const MovieDescription = ({ episodes, content }) => {
-    console.log(episodes);
+const MovieDescription = ({ episodes, content, name }) => {
     const [typeShow, setTypeShow] = useState(1);
     const [typeSpace, setTypeSpace] = useState('|');
     const [typeStart, setTypeStart] = useState('');
@@ -33,7 +32,7 @@ const MovieDescription = ({ episodes, content }) => {
                     {content}
                 </Panel>
             </Collapse>
-            <Collapse expandIconPosition="end">
+            <Collapse expandIconPosition="end" defaultActiveKey={['1']}>
                 <Panel header="Xem phim" key="1">
                     {episodes?.map((epis, index) => {
                         return (
@@ -60,7 +59,7 @@ const MovieDescription = ({ episodes, content }) => {
                     })}
                 </Panel>
             </Collapse>
-            <Collapse expandIconPosition="end">
+            <Collapse expandIconPosition="end" defaultActiveKey={['1']}>
                 <Panel header="Định dạng nguồn" key="1">
                     <div className="movie-description__source">
                         <span>Định dạng hiển thị:</span>
@@ -68,14 +67,14 @@ const MovieDescription = ({ episodes, content }) => {
                             return (
                                 <div key={i} className="movie-description__source__item">
                                     <input
-                                        checked={item.id === typeShow}
+                                        checked={item.id == typeShow}
                                         onChange={(e) => setTypeShow(e.target.value)}
                                         type="radio"
                                         value={item.id}
                                     />
                                     <label>
                                         {typeStart}
-                                        {item.text}
+                                        {item.text.replace('|', `${typeSpace}`)}
                                         {typeEnd}
                                     </label>
                                 </div>
@@ -102,39 +101,59 @@ const MovieDescription = ({ episodes, content }) => {
                     </Row>
                 </Panel>
             </Collapse>
-            <Collapse expandIconPosition="end">
+            <Collapse expandIconPosition="end" defaultActiveKey={['1']}>
                 <Panel header="Nguồn Embed" className="" key="1">
                     <Tabs
                         className="movie-description__embed"
                         type="card"
                         size="small"
-                        // items={episodes.fill(null).map((item, i) => {
-                        //     console.log(item);
-                        //     // const childVal = item?.server_data?.map((data, i) => {
-                        //     //     const val = `${typeStart}`;
-                        //     // });
-                        //     return {
-                        //         label: item?.server_name ?? '',
-                        //         key: { i },
-                        //         children: <Input.TextArea disabled={true} value={'axxxxx'} />,
-                        //     };
-                        // })}
+                        items={episodes?.map((item, index) => {
+                            const childItem = item?.server_data?.map((data) => {
+                                switch (typeShow.toString()) {
+                                    case '1':
+                                        return `${typeStart}${data.name}${typeSpace}${data.link_embed}${typeEnd}`;
+                                    case '2':
+                                        return `${typeStart}${data.name}${typeSpace}${typeSpace}${data?.slug}${data.link_embed}${typeEnd}`;
+                                    case '3':
+                                        return `${typeStart}${data.link_embed}${typeEnd}`;
+                                    case '4':
+                                        return `${typeStart}${name}${typeSpace}${data.link_embed}${typeEnd}`;
+                                }
+                            });
+                            const childVal = childItem.join('\n').toString();
+                            return {
+                                label: item?.server_name,
+                                key: `${index}`,
+                                children: <Input.TextArea disabled={true} value={childVal} />,
+                            };
+                        })}
                     />
                 </Panel>
             </Collapse>
-            <Collapse expandIconPosition="end" className="movie-description__m3u8">
+            <Collapse expandIconPosition="end" className="movie-description__m3u8" defaultActiveKey={['1']}>
                 <Panel header="Nguồn M3U8" key="1">
                     <Tabs
                         type="card"
                         size="small"
-                        // items={episodes.fill(null).map((item, index) => {
-                        //     const id = String(i + 1);
-                        //     return {
-                        //         label: item.server_name,
-                        //         key: index,
-                        //         children: <Input.TextArea disabled={true} value={'axxxxx'} />,
-                        //     };
-                        // })}
+                        items={episodes?.map((item, index) => {
+                            const childItem = item?.server_data?.map((data) => {
+                                switch (typeShow.toString()) {
+                                    case '1':
+                                        return `${typeStart}${data.name}${typeSpace}${data.link_m3u8}${typeEnd}`;
+                                    case '2':
+                                        return `${typeStart}${data.name}${typeSpace}${typeSpace}${data?.slug}${data.link_m3u8}${typeEnd}`;
+                                    case '3':
+                                        return `${typeStart}${data.link_m3u8}${typeEnd}`;
+                                    case '4':
+                                        return `${typeStart}${name}${typeSpace}${data.link_m3u8}${typeEnd}`;
+                                }
+                            });
+                            return {
+                                label: item?.server_name,
+                                key: `${index}`,
+                                children: <Input.TextArea disabled={true} value={childItem.join('\n')} />,
+                            };
+                        })}
                     />
                 </Panel>
             </Collapse>
