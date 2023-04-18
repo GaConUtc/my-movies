@@ -9,9 +9,9 @@ export const slugSlice = createSlice({
     initialState,
     reducers: {
         setSlug: (state, action) => {
-            state.value = action.payload;
+            state = action.payload;
         },
     },
 });
-
+export const { setSlug } = slugSlice.actions;
 export default slugSlice.reducer;

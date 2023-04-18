@@ -1,12 +1,34 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Row, Collapse, Input, Tabs } from 'antd';
+import { useDispatch, useSelector } from 'react-redux';
+import { setTypeShow } from '../../app/Slices/typeShowMovieDesc';
+import { setTypeSpace } from '../../app/Slices/typeSpaceMovieDesc';
+import { setTypeStart } from '../../app/Slices/typeStartMovieDesc';
+import { setTypeEnd } from '../../app/Slices/typeEndMovieDesc';
 const { Panel } = Collapse;
 
 const MovieDescription = ({ episodes, content, name }) => {
-    const [typeShow, setTypeShow] = useState(1);
-    const [typeSpace, setTypeSpace] = useState('|');
-    const [typeStart, setTypeStart] = useState('');
-    const [typeEnd, setTypeEnd] = useState('');
+    const stateReducer = useSelector((state) => state);
+    const dispatch = useDispatch();
+    const onChangeType = ({ payload, type }) => {
+        switch (type) {
+            case 'TypeShow':
+                return dispatch(setTypeShow(payload));
+            case 'TypeStart':
+                return dispatch(setTypeStart(payload));
+            case 'TypeSpace':
+                return dispatch(setTypeSpace(payload));
+            case 'TypeEnd':
+                return dispatch(setTypeEnd(payload));
+            default:
+                return;
+        }
+    };
+    const typeShow = stateReducer.typeShowMovieDesc;
+    const typeSpace = stateReducer.typeSpaceMovieDesc;
+    const typeStart = stateReducer.typeStartMovieDesc;
+    const typeEnd = stateReducer.typeEndMovieDesc;
+
     const typeShowCourse = [
         {
             id: 1,
@@ -68,7 +90,7 @@ const MovieDescription = ({ episodes, content, name }) => {
                                 <div key={i} className="movie-description__source__item">
                                     <input
                                         checked={item.id == typeShow}
-                                        onChange={(e) => setTypeShow(e.target.value)}
+                                        onChange={(e) => onChangeType({ payload: e.target.value, type: 'TypeShow' })}
                                         type="radio"
                                         value={item.id}
                                     />
@@ -84,19 +106,26 @@ const MovieDescription = ({ episodes, content, name }) => {
                     <Row className="movie-description__type">
                         <div className="movie-description__type__item">
                             <label>Định dạng phân cách: </label>
-                            <Input value={typeSpace} onChange={(e) => setTypeSpace(e.target.value)} />
+                            <Input
+                                value={typeSpace}
+                                onChange={(e) => onChangeType({ payload: e.target.value, type: 'TypeSpace' })}
+                            />
                         </div>
                         <div className="movie-description__type__item">
                             <label>Định dạng đầu: </label>
                             <Input
                                 value={typeStart}
                                 placeholder="VD: ["
-                                onChange={(e) => setTypeStart(e.target.value)}
+                                onChange={(e) => onChangeType({ payload: e.target.value, type: 'TypeStart' })}
                             />
                         </div>
                         <div className="movie-description__type__item">
                             <label>Định dạng cuối: </label>
-                            <Input value={typeEnd} placeholder="VD: ]" onChange={(e) => setTypeEnd(e.target.value)} />
+                            <Input
+                                value={typeEnd}
+                                placeholder="VD: ]"
+                                onChange={(e) => onChangeType({ payload: e.target.value, type: 'TypeEnd' })}
+                            />
                         </div>
                     </Row>
                 </Panel>
@@ -118,6 +147,8 @@ const MovieDescription = ({ episodes, content, name }) => {
                                         return `${typeStart}${data.link_embed}${typeEnd}`;
                                     case '4':
                                         return `${typeStart}${name}${typeSpace}${data.link_embed}${typeEnd}`;
+                                    default:
+                                        return '';
                                 }
                             });
                             const childVal = childItem.join('\n').toString();
