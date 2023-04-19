@@ -20,7 +20,7 @@ const Login = () => {
                 initialValues={{
                     remember: true,
                 }}
-                onFinish={onFinish}
+                // onFinish={onFinish}
                 // onFinishFailed={onFinishFailed}
                 autoComplete="off"
             >
