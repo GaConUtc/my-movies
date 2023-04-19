@@ -68,6 +68,7 @@ const MovieDescription = ({ episodes, content, name }) => {
                                             <a
                                                 key={i}
                                                 target="_blank"
+                                                rel="noreferrer"
                                                 href={item.link_embed}
                                                 className="movie-description__server__item"
                                             >
@@ -89,7 +90,7 @@ const MovieDescription = ({ episodes, content, name }) => {
                             return (
                                 <div key={i} className="movie-description__source__item">
                                     <input
-                                        checked={item.id == typeShow}
+                                        checked={item.id === Number(typeShow)}
                                         onChange={(e) => onChangeType({ payload: e.target.value, type: 'TypeShow' })}
                                         type="radio"
                                         value={item.id}
@@ -177,6 +178,8 @@ const MovieDescription = ({ episodes, content, name }) => {
                                         return `${typeStart}${data.link_m3u8}${typeEnd}`;
                                     case '4':
                                         return `${typeStart}${name}${typeSpace}${data.link_m3u8}${typeEnd}`;
+                                    default:
+                                        return '';
                                 }
                             });
                             return {

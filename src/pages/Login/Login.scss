@@ -1,0 +1,20 @@
+.login-form {
+    justify-content: center;
+    align-items: center;
+    margin: 2rem 0;
+
+    form {
+        // background-color: rgb(12 74 110);
+        border: 1px solid #333;
+        padding: 3rem 6rem;
+        border-radius: 20px;
+
+        label {
+            color: rgb(56 189 248) !important;
+        }
+
+        // button[type='submit'] {
+        //     background-color: rgb(71 85 105);
+        // }
+    }
+}

@@ -1,4 +1,7 @@
 .footer {
+    position: -webkit-sticky;
+    position: fixed;
+    bottom: 0;
     color: rgb(100 116 139);
     .ant-row {
         margin: 1rem 0 1rem 0;

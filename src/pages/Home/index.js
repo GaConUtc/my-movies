@@ -39,7 +39,7 @@ const Home = () => {
             render: (_, record) => (
                 <div className="movie-name">
                     <img alt="Movie Thumb" className="movie-name__thumb" src={pathImage + record.thumb_url} />
-                    <Link className="movie-name__link" to={`./phim?slug=${record.slug}`}>
+                    <Link className="movie-name__link" to={`/phim?slug=${record.slug}`}>
                         <h3>{record.name}</h3>
                         <h4>{`(${record.origin_name})`}</h4>
                     </Link>
